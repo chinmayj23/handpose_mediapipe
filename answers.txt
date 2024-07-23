@@ -1,0 +1,20 @@
+1. total 27 DOF as described below,
+
+WRIST: 6 DOF - 3 rotation and 3 translation
+THUMB_CMC: 2 DOF - one in flexion direction and other in abduction direction
+THUMB_MCP: 1 DOF - no abduction like in other fingers' MCP
+all _MCP joints except THUMB_MCP: 2 DOF - one in flexion direction and other in abduction direction
+all _PIP and _DIP joints and THUMB_IP: 1 DOF (only in flexion direction)
+all _TIP joints: 0 DOF (since its not a joint)
+
+2. If we compute the angle of joints along all 3 axes (pitch, roll, and yaw), we can combine them to form a rotation matrix of the joint. 
+   We basically compute R_x, R_y, and R_z, and then their dot product, i.e. R_zyx should provide us the rotation matrix.
+
+3. It can be computed as the Eucledian distance between the keypoint pair forming the bone. But this will be in pixel coordinates and not in the metric system. 
+   To convert it to a metric scale we need to acquire a conversion factor. 
+
+
+References:
+
+https://dspace.mit.edu/handle/1721.1/121634
+https://simple.wikipedia.org/wiki/Pitch,_yaw,_and_roll
